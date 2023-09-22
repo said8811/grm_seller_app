@@ -204,9 +204,8 @@ class MainPage extends HookConsumerWidget {
                               itemBuilder: (context, index) =>
                                   ProductWidget(product: data[index])),
                           error: (error, stackTrace) => Text(error.toString()),
-                          loading: () => const Center(
-                            child: CircularProgressIndicator(),
-                          ),
+                          loading: () =>
+                              const Center(child: CircularProgressIndicator()),
                         )
                       ],
                     ),
