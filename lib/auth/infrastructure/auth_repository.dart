@@ -14,8 +14,8 @@ class AuthRepository {
       if (response.statusCode == 200) {
         final pref = await SharedPreferences.getInstance();
         await pref.setString("token", response.data['accessToken']);
-        await pref.setString("id", response.data['user']['position']['id']);
-        await pref.setString("filial", response.data['user']['filial']['id']);
+        // await pref.setString("id", response.data['user']['id']);
+        // await pref.setString("filial", response.data['user']['filial']['id']);
         return right(response.data['accessToken']);
       } else {
         return left("login error");

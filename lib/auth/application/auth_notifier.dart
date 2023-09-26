@@ -13,6 +13,10 @@ class AuthNotifier extends StateNotifier<AuthState> {
   Future<void> login(String login) async {
     final response = await repository.login(login);
 
-    state = response.fold((l) => AuthState.failure, (r) => AuthState.succes);
+    state = response.fold(
+      (l) => AuthState.failure,
+      (r) => AuthState.succes,
+    );
+    state = AuthState.initial;
   }
 }

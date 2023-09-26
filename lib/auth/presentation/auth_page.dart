@@ -72,9 +72,13 @@ class AuthPage extends HookConsumerWidget {
                         .login("#${login.value}");
                   },
                   style: ElevatedButton.styleFrom(
-                      backgroundColor: Colors.black,
+                      padding: const EdgeInsets.symmetric(
+                          horizontal: 30, vertical: 20),
+                      shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(10)),
+                      backgroundColor: const Color(0xFF282828),
                       foregroundColor: Colors.white,
-                      elevation: 3),
+                      elevation: 0.1),
                   child: const Text(
                     "Войти",
                     style: TextStyle(color: Colors.white),

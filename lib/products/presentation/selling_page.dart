@@ -139,9 +139,8 @@ class _SellProductPageState extends ConsumerState<SellProductPage> {
                 title: const Text("Пластик карта"),
               ),
               const Gap(10),
-              Opacity(
-                opacity: cardUsed ? 1 : 0,
-                child: TextField(
+              if (cardUsed)
+                TextField(
                   controller: plasticController,
                   decoration: InputDecoration(
                     hintText: "Сколько оплачено пластиком",
@@ -154,7 +153,6 @@ class _SellProductPageState extends ConsumerState<SellProductPage> {
                         borderRadius: BorderRadius.circular(15)),
                   ),
                 ),
-              ),
               const Spacer(),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
