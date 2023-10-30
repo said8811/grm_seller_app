@@ -1,8 +1,11 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:gap/gap.dart';
 import 'package:grm_cashier/core/shared/providers.dart';
 import 'package:grm_cashier/products/domain/models/product_model.dart';
+import 'package:grm_cashier/products/presentation/end_page.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -38,9 +41,11 @@ class _SellProductPageState extends ConsumerState<SellProductPage> {
     final kassaId = ref.watch(kassaNotifier);
     ref.listen(orderStateNotifier, (previous, next) {
       if (next.isCreated) {
-        Navigator.pop(context);
+        Navigator.push(context,
+            MaterialPageRoute(builder: (context) => const EndProductsPage()));
       }
       if (next.error != null) {
+        log(next.error.toString());
         Fluttertoast.showToast(msg: next.error!);
       }
     });

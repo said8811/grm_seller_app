@@ -26,8 +26,6 @@ mixin _$ProductModel {
   int get count => throw _privateConstructorUsedError;
   @JsonKey(defaultValue: "")
   String get imgUrl => throw _privateConstructorUsedError;
-  @JsonKey(defaultValue: [])
-  List<String> get otherImgs => throw _privateConstructorUsedError;
   int get price => throw _privateConstructorUsedError;
   int get comingPrice => throw _privateConstructorUsedError;
   @JsonKey(defaultValue: "")
@@ -56,7 +54,6 @@ abstract class $ProductModelCopyWith<$Res> {
       ColorModel? color,
       int count,
       @JsonKey(defaultValue: "") String imgUrl,
-      @JsonKey(defaultValue: []) List<String> otherImgs,
       int price,
       int comingPrice,
       @JsonKey(defaultValue: "") String shape,
@@ -86,7 +83,6 @@ class _$ProductModelCopyWithImpl<$Res, $Val extends ProductModel>
     Object? color = freezed,
     Object? count = null,
     Object? imgUrl = null,
-    Object? otherImgs = null,
     Object? price = null,
     Object? comingPrice = null,
     Object? shape = null,
@@ -115,10 +111,6 @@ class _$ProductModelCopyWithImpl<$Res, $Val extends ProductModel>
           ? _value.imgUrl
           : imgUrl // ignore: cast_nullable_to_non_nullable
               as String,
-      otherImgs: null == otherImgs
-          ? _value.otherImgs
-          : otherImgs // ignore: cast_nullable_to_non_nullable
-              as List<String>,
       price: null == price
           ? _value.price
           : price // ignore: cast_nullable_to_non_nullable
@@ -181,7 +173,6 @@ abstract class _$$_ProductModelCopyWith<$Res>
       ColorModel? color,
       int count,
       @JsonKey(defaultValue: "") String imgUrl,
-      @JsonKey(defaultValue: []) List<String> otherImgs,
       int price,
       int comingPrice,
       @JsonKey(defaultValue: "") String shape,
@@ -211,7 +202,6 @@ class __$$_ProductModelCopyWithImpl<$Res>
     Object? color = freezed,
     Object? count = null,
     Object? imgUrl = null,
-    Object? otherImgs = null,
     Object? price = null,
     Object? comingPrice = null,
     Object? shape = null,
@@ -240,10 +230,6 @@ class __$$_ProductModelCopyWithImpl<$Res>
           ? _value.imgUrl
           : imgUrl // ignore: cast_nullable_to_non_nullable
               as String,
-      otherImgs: null == otherImgs
-          ? _value._otherImgs
-          : otherImgs // ignore: cast_nullable_to_non_nullable
-              as List<String>,
       price: null == price
           ? _value.price
           : price // ignore: cast_nullable_to_non_nullable
@@ -281,14 +267,12 @@ class _$_ProductModel implements _ProductModel {
       required this.color,
       required this.count,
       @JsonKey(defaultValue: "") required this.imgUrl,
-      @JsonKey(defaultValue: []) required final List<String> otherImgs,
       required this.price,
       required this.comingPrice,
       @JsonKey(defaultValue: "") required this.shape,
       @JsonKey(defaultValue: "") required this.size,
       @JsonKey(defaultValue: "") required this.style,
-      required this.model})
-      : _otherImgs = otherImgs;
+      required this.model});
 
   factory _$_ProductModel.fromJson(Map<String, dynamic> json) =>
       _$$_ProductModelFromJson(json);
@@ -304,15 +288,6 @@ class _$_ProductModel implements _ProductModel {
   @override
   @JsonKey(defaultValue: "")
   final String imgUrl;
-  final List<String> _otherImgs;
-  @override
-  @JsonKey(defaultValue: [])
-  List<String> get otherImgs {
-    if (_otherImgs is EqualUnmodifiableListView) return _otherImgs;
-    // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_otherImgs);
-  }
-
   @override
   final int price;
   @override
@@ -331,7 +306,7 @@ class _$_ProductModel implements _ProductModel {
 
   @override
   String toString() {
-    return 'ProductModel(id: $id, code: $code, color: $color, count: $count, imgUrl: $imgUrl, otherImgs: $otherImgs, price: $price, comingPrice: $comingPrice, shape: $shape, size: $size, style: $style, model: $model)';
+    return 'ProductModel(id: $id, code: $code, color: $color, count: $count, imgUrl: $imgUrl, price: $price, comingPrice: $comingPrice, shape: $shape, size: $size, style: $style, model: $model)';
   }
 
   @override
@@ -344,8 +319,6 @@ class _$_ProductModel implements _ProductModel {
             (identical(other.color, color) || other.color == color) &&
             (identical(other.count, count) || other.count == count) &&
             (identical(other.imgUrl, imgUrl) || other.imgUrl == imgUrl) &&
-            const DeepCollectionEquality()
-                .equals(other._otherImgs, _otherImgs) &&
             (identical(other.price, price) || other.price == price) &&
             (identical(other.comingPrice, comingPrice) ||
                 other.comingPrice == comingPrice) &&
@@ -357,20 +330,8 @@ class _$_ProductModel implements _ProductModel {
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      id,
-      code,
-      color,
-      count,
-      imgUrl,
-      const DeepCollectionEquality().hash(_otherImgs),
-      price,
-      comingPrice,
-      shape,
-      size,
-      style,
-      model);
+  int get hashCode => Object.hash(runtimeType, id, code, color, count, imgUrl,
+      price, comingPrice, shape, size, style, model);
 
   @JsonKey(ignore: true)
   @override
@@ -393,7 +354,6 @@ abstract class _ProductModel implements ProductModel {
       required final ColorModel? color,
       required final int count,
       @JsonKey(defaultValue: "") required final String imgUrl,
-      @JsonKey(defaultValue: []) required final List<String> otherImgs,
       required final int price,
       required final int comingPrice,
       @JsonKey(defaultValue: "") required final String shape,
@@ -415,9 +375,6 @@ abstract class _ProductModel implements ProductModel {
   @override
   @JsonKey(defaultValue: "")
   String get imgUrl;
-  @override
-  @JsonKey(defaultValue: [])
-  List<String> get otherImgs;
   @override
   int get price;
   @override

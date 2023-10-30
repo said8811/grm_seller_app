@@ -15,7 +15,6 @@ class ProductModel with _$ProductModel {
     required ColorModel? color,
     required int count,
     @JsonKey(defaultValue: "") required String imgUrl,
-    @JsonKey(defaultValue: []) required List<String> otherImgs,
     required int price,
     required int comingPrice,
     @JsonKey(defaultValue: "") required String shape,
