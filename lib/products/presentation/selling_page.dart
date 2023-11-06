@@ -146,6 +146,7 @@ class _SellProductPageState extends ConsumerState<SellProductPage> {
               const Gap(10),
               if (cardUsed)
                 TextField(
+                  keyboardType: TextInputType.number,
                   controller: plasticController,
                   decoration: InputDecoration(
                     hintText: "Сколько оплачено пластиком",

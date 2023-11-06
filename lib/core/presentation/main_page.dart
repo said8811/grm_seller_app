@@ -3,11 +3,12 @@ import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:gap/gap.dart';
 import 'package:grm_cashier/auth/presentation/auth_page.dart';
-import 'package:grm_cashier/collection/shared/providers.dart';
 import 'package:grm_cashier/core/application/change_ui_notifier.dart';
+import 'package:grm_cashier/core/presentation/widget/collections_view.dart';
+import 'package:grm_cashier/core/presentation/widget/products_view.dart';
+import 'package:grm_cashier/core/presentation/widget/search_engine_with_filter.dart';
+import 'package:grm_cashier/core/presentation/widget/select_custom_widget.dart';
 import 'package:grm_cashier/core/shared/providers.dart';
-import 'package:grm_cashier/products/presentation/widgets/product_widget.dart';
-import 'package:grm_cashier/products/shared/providers.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 class MainPage extends HookConsumerWidget {
@@ -15,9 +16,7 @@ class MainPage extends HookConsumerWidget {
 
   @override
   Widget build(BuildContext context, ref) {
-    final products = ref.watch(getProducts);
     final isFilter = useState(false);
-    final data = ref.watch(getCollections);
     final state = ref.watch(mainPageNotifier);
     return Scaffold(
       backgroundColor: const Color(0xFFE0DFD6),
@@ -61,156 +60,43 @@ class MainPage extends HookConsumerWidget {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      Expanded(
-                        child: InkWell(
-                          borderRadius: BorderRadius.circular(18),
-                          onTap: () {
-                            ref.read(mainPageNotifier.notifier).changeState(
-                                state == MainPageStates.collection
-                                    ? MainPageStates.product
-                                    : MainPageStates.collection);
-                          },
-                          child: Container(
-                            padding: const EdgeInsets.all(15),
-                            decoration: BoxDecoration(
-                                color: state == MainPageStates.collection
-                                    ? Colors.black
-                                    : Colors.white.withOpacity(0.9),
-                                borderRadius: BorderRadius.circular(18)),
-                            child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Text(
-                                  "Коллекции",
-                                  style: TextStyle(
-                                      fontSize: 20,
-                                      fontWeight: FontWeight.bold,
-                                      color: state == MainPageStates.collection
-                                          ? Colors.white
-                                          : Colors.black),
-                                ),
-                                const Gap(4),
-                                Text(
-                                  "3200 шт ковров",
-                                  style: TextStyle(
-                                      fontSize: 14,
-                                      fontWeight: FontWeight.w200,
-                                      color: state == MainPageStates.collection
-                                          ? Colors.white
-                                          : Colors.black),
-                                ),
-                                const Gap(12),
-                                SvgPicture.asset(
-                                  state == MainPageStates.collection
-                                      ? "assets/icons/arrowDown.svg"
-                                      : "assets/icons/next.svg",
-                                )
-                              ],
-                            ),
-                          ),
-                        ),
+                      SelectCustomWidget(
+                        onTap: () {
+                          ref.read(mainPageNotifier.notifier).changeState(
+                              state == MainPageStates.collection
+                                  ? MainPageStates.product
+                                  : MainPageStates.collection);
+                        },
+                        isSelected: state == MainPageStates.collection,
+                        label: "Коллекции",
+                        count: "3200 шт ковров",
                       ),
                       const Gap(10),
-                      Expanded(
-                        child: InkWell(
-                          borderRadius: BorderRadius.circular(18),
+                      SelectCustomWidget(
                           onTap: () {
-                            ref
-                                .read(mainPageNotifier.notifier)
-                                .changeState(MainPageStates.otchet);
+                            ref.read(mainPageNotifier.notifier).changeState(
+                                state == MainPageStates.otchet
+                                    ? MainPageStates.product
+                                    : MainPageStates.otchet);
                           },
-                          child: Container(
-                            padding: const EdgeInsets.all(15),
-                            decoration: BoxDecoration(
-                                color: state == MainPageStates.otchet
-                                    ? Colors.black
-                                    : Colors.white,
-                                borderRadius: BorderRadius.circular(18)),
-                            child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Text(
-                                  "Отчеты",
-                                  style: TextStyle(
-                                      fontSize: 20,
-                                      fontWeight: FontWeight.bold,
-                                      color: state == MainPageStates.otchet
-                                          ? Colors.white
-                                          : Colors.black),
-                                ),
-                                const Gap(4),
-                                Text(
-                                  "За месяц",
-                                  style: TextStyle(
-                                      fontSize: 14,
-                                      fontWeight: FontWeight.w200,
-                                      color: state == MainPageStates.otchet
-                                          ? Colors.white
-                                          : Colors.black),
-                                ),
-                                const Gap(12),
-                                SvgPicture.asset(
-                                  state == MainPageStates.otchet
-                                      ? "assets/icons/arrowDown.svg"
-                                      : "assets/icons/next.svg",
-                                )
-                              ],
-                            ),
-                          ),
-                        ),
-                      )
+                          isSelected: state == MainPageStates.otchet,
+                          label: "Отчеты",
+                          count: "За месяц")
                     ],
                   ),
                 ],
               ),
             ),
             SliverAppBar(
-              leadingWidth: 0,
-              pinned: true,
-              toolbarHeight: 80,
-              backgroundColor: const Color(0xFFE0DFD6),
-              title: SizedBox(
-                height: 60,
-                child: Row(
-                  children: [
-                    Expanded(
-                      flex: 4,
-                      child: TextField(
-                        decoration: InputDecoration(
-                          border: OutlineInputBorder(
-                              borderSide: BorderSide.none,
-                              borderRadius: BorderRadius.circular(18)),
-                          hintText: "Поиск",
-                          prefixIcon: const Icon(Icons.search),
-                          fillColor: Colors.white,
-                          filled: true,
-                        ),
-                      ),
-                    ),
-                    const Gap(7),
-                    Expanded(
-                      child: InkWell(
-                        splashColor: Colors.white,
-                        borderRadius: BorderRadius.circular(10),
-                        onTap: () {
-                          isFilter.value = !isFilter.value;
-                        },
-                        child: Container(
-                          height: double.infinity,
-                          decoration: BoxDecoration(
-                              color: Colors.white.withOpacity(0.5),
-                              borderRadius: BorderRadius.circular(10)),
-                          padding: const EdgeInsets.all(18),
-                          child: SvgPicture.asset(
-                            "assets/icons/filterOutlined.svg",
-                          ),
-                        ),
-                      ),
-                    )
-                  ],
-                ),
-              ),
-            ),
+                leadingWidth: 0,
+                pinned: true,
+                toolbarHeight: 80,
+                backgroundColor: const Color(0xFFE0DFD6),
+                title: SearchEngineWithFilter(
+                  onTap: () {
+                    isFilter.value = !isFilter.value;
+                  },
+                )),
             SliverToBoxAdapter(
               child: Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 20),
@@ -236,50 +122,11 @@ class MainPage extends HookConsumerWidget {
                           ),
                         const Gap(10),
                         if (state == MainPageStates.product)
-                          products.when(
-                            data: (data) => ListView.separated(
-                                physics: const NeverScrollableScrollPhysics(),
-                                separatorBuilder: (context, index) =>
-                                    const Gap(15),
-                                itemCount: data.length,
-                                shrinkWrap: true,
-                                itemBuilder: (context, index) =>
-                                    ProductWidget(product: data[index])),
-                            error: (error, stackTrace) =>
-                                Text(error.toString()),
-                            loading: () => const Center(
-                                child: CircularProgressIndicator()),
-                          ),
+                          const ProductsView(),
                         if (state == MainPageStates.collection)
-                          data.when(
-                              data: (data) => GridView.builder(
-                                    itemCount: data.length,
-                                    shrinkWrap: true,
-                                    itemBuilder: (context, index) => Container(
-                                        padding: const EdgeInsets.all(20),
-                                        decoration: BoxDecoration(
-                                          color: Colors.white,
-                                          borderRadius:
-                                              BorderRadius.circular(10),
-                                        ),
-                                        child: Text(
-                                          data[index].title,
-                                          style: const TextStyle(
-                                              fontWeight: FontWeight.bold),
-                                        )),
-                                    gridDelegate:
-                                        const SliverGridDelegateWithFixedCrossAxisCount(
-                                      crossAxisCount: 2,
-                                      mainAxisSpacing: 20,
-                                      crossAxisSpacing: 30,
-                                    ),
-                                  ),
-                              error: (error, stackTrace) => Center(
-                                    child: Text(error.toString()),
-                                  ),
-                              loading: () => const Center(
-                                    child: CircularProgressIndicator(),
-                                  )),
+                          CollectionsView(
+                            onTap: (collection) {},
+                          ),
                       ],
                     ),
                   ],
