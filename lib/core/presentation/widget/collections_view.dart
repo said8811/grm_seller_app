@@ -12,11 +12,13 @@ class CollectionsView extends ConsumerWidget {
     final data = ref.watch(getCollections);
     return data.when(
       data: (data) => GridView.builder(
+        physics: const NeverScrollableScrollPhysics(),
         itemCount: data.length,
         shrinkWrap: true,
         itemBuilder: (context, index) => InkWell(
+          splashColor: Colors.white,
           onTap: onTap(data[index]),
-          child: Ink(
+          child: Container(
               padding: const EdgeInsets.all(20),
               decoration: BoxDecoration(
                 color: Colors.white,

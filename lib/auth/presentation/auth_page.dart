@@ -14,13 +14,13 @@ class AuthPage extends HookConsumerWidget {
   @override
   Widget build(BuildContext context, ref) {
     ref.listen(auhtStateNotifier, (previous, next) {
-      if (next == AuthState.succes) {
+      if (next == AuthState.succes || previous == AuthState.succes) {
         Navigator.pushAndRemoveUntil(
             context,
             MaterialPageRoute(builder: (context) => const MainPage()),
             (route) => false);
       } else if (next == AuthState.failure) {
-        Fluttertoast.showToast(msg: "something went wrong");
+        Fluttertoast.showToast(msg: "Неправильный логин");
       }
     });
     final login = useState("");

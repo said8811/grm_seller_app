@@ -14,7 +14,7 @@ class CollectionsPage extends ConsumerWidget {
       backgroundColor: const Color(0xFFD7FE62),
       body: SafeArea(
         child: data.when(
-            data: (data) => Container(
+            data: (data) => Ink(
                   padding: const EdgeInsets.symmetric(horizontal: 20),
                   width: double.infinity,
                   decoration: const BoxDecoration(

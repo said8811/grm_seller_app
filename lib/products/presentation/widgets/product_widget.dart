@@ -20,12 +20,12 @@ class ProductWidget extends StatelessWidget {
                 builder: (context) => SingleProductPage(product: product)));
       },
       child: Container(
+        height: 240,
         padding: const EdgeInsets.all(20),
         decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(10),
-            image: const DecorationImage(
-                image: AssetImage("assets/images/carpet.jpg"),
-                fit: BoxFit.cover)),
+            image: DecorationImage(
+                image: NetworkImage(product.imgUrl), fit: BoxFit.cover)),
         child: Column(
           children: [
             Row(
@@ -39,7 +39,10 @@ class ProductWidget extends StatelessWidget {
                 ),
               ],
             ),
-            const Gap(60),
+            const Gap(30),
+            if (product.imgUrl.isEmpty)
+              SvgPicture.asset('assets/icons/image.svg'),
+            const Spacer(),
             Row(
               children: [
                 Column(

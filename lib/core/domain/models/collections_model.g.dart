@@ -1,20 +1,20 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-// ignore_for_file: non_constant_identifier_names
-
 part of 'collections_model.dart';
 
 // **************************************************************************
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$_CollectionsModel _$$_CollectionsModelFromJson(Map<String, dynamic> json) =>
-    _$_CollectionsModel(
+_$CollectionsModelImpl _$$CollectionsModelImplFromJson(
+        Map<String, dynamic> json) =>
+    _$CollectionsModelImpl(
       id: json['id'] as String,
       title: json['title'] as String,
     );
 
-Map<String, dynamic> _$$_CollectionsModelToJson(_$_CollectionsModel instance) =>
+Map<String, dynamic> _$$CollectionsModelImplToJson(
+        _$CollectionsModelImpl instance) =>
     <String, dynamic>{
       'id': instance.id,
       'title': instance.title,

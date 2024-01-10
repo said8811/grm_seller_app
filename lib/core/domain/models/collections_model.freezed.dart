@@ -68,22 +68,22 @@ class _$CollectionsModelCopyWithImpl<$Res, $Val extends CollectionsModel>
 }
 
 /// @nodoc
-abstract class _$$_CollectionsModelCopyWith<$Res>
+abstract class _$$CollectionsModelImplCopyWith<$Res>
     implements $CollectionsModelCopyWith<$Res> {
-  factory _$$_CollectionsModelCopyWith(
-          _$_CollectionsModel value, $Res Function(_$_CollectionsModel) then) =
-      __$$_CollectionsModelCopyWithImpl<$Res>;
+  factory _$$CollectionsModelImplCopyWith(_$CollectionsModelImpl value,
+          $Res Function(_$CollectionsModelImpl) then) =
+      __$$CollectionsModelImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({String id, String title});
 }
 
 /// @nodoc
-class __$$_CollectionsModelCopyWithImpl<$Res>
-    extends _$CollectionsModelCopyWithImpl<$Res, _$_CollectionsModel>
-    implements _$$_CollectionsModelCopyWith<$Res> {
-  __$$_CollectionsModelCopyWithImpl(
-      _$_CollectionsModel _value, $Res Function(_$_CollectionsModel) _then)
+class __$$CollectionsModelImplCopyWithImpl<$Res>
+    extends _$CollectionsModelCopyWithImpl<$Res, _$CollectionsModelImpl>
+    implements _$$CollectionsModelImplCopyWith<$Res> {
+  __$$CollectionsModelImplCopyWithImpl(_$CollectionsModelImpl _value,
+      $Res Function(_$CollectionsModelImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -92,7 +92,7 @@ class __$$_CollectionsModelCopyWithImpl<$Res>
     Object? id = null,
     Object? title = null,
   }) {
-    return _then(_$_CollectionsModel(
+    return _then(_$CollectionsModelImpl(
       id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
@@ -107,11 +107,11 @@ class __$$_CollectionsModelCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_CollectionsModel implements _CollectionsModel {
-  _$_CollectionsModel({required this.id, required this.title});
+class _$CollectionsModelImpl implements _CollectionsModel {
+  _$CollectionsModelImpl({required this.id, required this.title});
 
-  factory _$_CollectionsModel.fromJson(Map<String, dynamic> json) =>
-      _$$_CollectionsModelFromJson(json);
+  factory _$CollectionsModelImpl.fromJson(Map<String, dynamic> json) =>
+      _$$CollectionsModelImplFromJson(json);
 
   @override
   final String id;
@@ -124,10 +124,10 @@ class _$_CollectionsModel implements _CollectionsModel {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_CollectionsModel &&
+            other is _$CollectionsModelImpl &&
             (identical(other.id, id) || other.id == id) &&
             (identical(other.title, title) || other.title == title));
   }
@@ -139,12 +139,13 @@ class _$_CollectionsModel implements _CollectionsModel {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_CollectionsModelCopyWith<_$_CollectionsModel> get copyWith =>
-      __$$_CollectionsModelCopyWithImpl<_$_CollectionsModel>(this, _$identity);
+  _$$CollectionsModelImplCopyWith<_$CollectionsModelImpl> get copyWith =>
+      __$$CollectionsModelImplCopyWithImpl<_$CollectionsModelImpl>(
+          this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_CollectionsModelToJson(
+    return _$$CollectionsModelImplToJson(
       this,
     );
   }
@@ -153,10 +154,10 @@ class _$_CollectionsModel implements _CollectionsModel {
 abstract class _CollectionsModel implements CollectionsModel {
   factory _CollectionsModel(
       {required final String id,
-      required final String title}) = _$_CollectionsModel;
+      required final String title}) = _$CollectionsModelImpl;
 
   factory _CollectionsModel.fromJson(Map<String, dynamic> json) =
-      _$_CollectionsModel.fromJson;
+      _$CollectionsModelImpl.fromJson;
 
   @override
   String get id;
@@ -164,6 +165,6 @@ abstract class _CollectionsModel implements CollectionsModel {
   String get title;
   @override
   @JsonKey(ignore: true)
-  _$$_CollectionsModelCopyWith<_$_CollectionsModel> get copyWith =>
+  _$$CollectionsModelImplCopyWith<_$CollectionsModelImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

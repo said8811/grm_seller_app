@@ -4,15 +4,15 @@ import 'package:grm_cashier/core/domain/models/collections_model.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class CollectionsRepository {
-  final Dio dio = Dio();
-  CollectionsRepository();
+  final Dio dio;
+  final SharedPreferences pref;
+  CollectionsRepository(this.dio, this.pref);
 
   Future<List<CollectionsModel>> getCollections() async {
     try {
-      final pref = await SharedPreferences.getInstance();
       final token = pref.getString("token");
       final Response response = await dio.get(
-        "https://grm.getter.uz/collection",
+        "collection",
         queryParameters: {
           "limit": 20,
           "page": 1,

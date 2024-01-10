@@ -74,22 +74,22 @@ class _$ColorModelCopyWithImpl<$Res, $Val extends ColorModel>
 }
 
 /// @nodoc
-abstract class _$$_ColorModelCopyWith<$Res>
+abstract class _$$ColorModelImplCopyWith<$Res>
     implements $ColorModelCopyWith<$Res> {
-  factory _$$_ColorModelCopyWith(
-          _$_ColorModel value, $Res Function(_$_ColorModel) then) =
-      __$$_ColorModelCopyWithImpl<$Res>;
+  factory _$$ColorModelImplCopyWith(
+          _$ColorModelImpl value, $Res Function(_$ColorModelImpl) then) =
+      __$$ColorModelImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({String id, String title, String code});
 }
 
 /// @nodoc
-class __$$_ColorModelCopyWithImpl<$Res>
-    extends _$ColorModelCopyWithImpl<$Res, _$_ColorModel>
-    implements _$$_ColorModelCopyWith<$Res> {
-  __$$_ColorModelCopyWithImpl(
-      _$_ColorModel _value, $Res Function(_$_ColorModel) _then)
+class __$$ColorModelImplCopyWithImpl<$Res>
+    extends _$ColorModelCopyWithImpl<$Res, _$ColorModelImpl>
+    implements _$$ColorModelImplCopyWith<$Res> {
+  __$$ColorModelImplCopyWithImpl(
+      _$ColorModelImpl _value, $Res Function(_$ColorModelImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -99,7 +99,7 @@ class __$$_ColorModelCopyWithImpl<$Res>
     Object? title = null,
     Object? code = null,
   }) {
-    return _then(_$_ColorModel(
+    return _then(_$ColorModelImpl(
       id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
@@ -118,11 +118,11 @@ class __$$_ColorModelCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_ColorModel implements _ColorModel {
-  _$_ColorModel({required this.id, required this.title, required this.code});
+class _$ColorModelImpl implements _ColorModel {
+  _$ColorModelImpl({required this.id, required this.title, required this.code});
 
-  factory _$_ColorModel.fromJson(Map<String, dynamic> json) =>
-      _$$_ColorModelFromJson(json);
+  factory _$ColorModelImpl.fromJson(Map<String, dynamic> json) =>
+      _$$ColorModelImplFromJson(json);
 
   @override
   final String id;
@@ -137,10 +137,10 @@ class _$_ColorModel implements _ColorModel {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_ColorModel &&
+            other is _$ColorModelImpl &&
             (identical(other.id, id) || other.id == id) &&
             (identical(other.title, title) || other.title == title) &&
             (identical(other.code, code) || other.code == code));
@@ -153,12 +153,12 @@ class _$_ColorModel implements _ColorModel {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_ColorModelCopyWith<_$_ColorModel> get copyWith =>
-      __$$_ColorModelCopyWithImpl<_$_ColorModel>(this, _$identity);
+  _$$ColorModelImplCopyWith<_$ColorModelImpl> get copyWith =>
+      __$$ColorModelImplCopyWithImpl<_$ColorModelImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_ColorModelToJson(
+    return _$$ColorModelImplToJson(
       this,
     );
   }
@@ -168,10 +168,10 @@ abstract class _ColorModel implements ColorModel {
   factory _ColorModel(
       {required final String id,
       required final String title,
-      required final String code}) = _$_ColorModel;
+      required final String code}) = _$ColorModelImpl;
 
   factory _ColorModel.fromJson(Map<String, dynamic> json) =
-      _$_ColorModel.fromJson;
+      _$ColorModelImpl.fromJson;
 
   @override
   String get id;
@@ -181,6 +181,6 @@ abstract class _ColorModel implements ColorModel {
   String get code;
   @override
   @JsonKey(ignore: true)
-  _$$_ColorModelCopyWith<_$_ColorModel> get copyWith =>
+  _$$ColorModelImplCopyWith<_$ColorModelImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

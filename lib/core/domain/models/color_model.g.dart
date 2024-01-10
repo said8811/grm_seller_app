@@ -1,21 +1,19 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-// ignore_for_file: non_constant_identifier_names
-
 part of 'color_model.dart';
 
 // **************************************************************************
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$_ColorModel _$$_ColorModelFromJson(Map<String, dynamic> json) =>
-    _$_ColorModel(
+_$ColorModelImpl _$$ColorModelImplFromJson(Map<String, dynamic> json) =>
+    _$ColorModelImpl(
       id: json['id'] as String,
       title: json['title'] as String,
       code: json['code'] as String,
     );
 
-Map<String, dynamic> _$$_ColorModelToJson(_$_ColorModel instance) =>
+Map<String, dynamic> _$$ColorModelImplToJson(_$ColorModelImpl instance) =>
     <String, dynamic>{
       'id': instance.id,
       'title': instance.title,

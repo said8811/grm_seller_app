@@ -1,19 +1,21 @@
+import 'dart:developer';
+
 import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
-import 'package:flutter/material.dart';
 import 'package:grm_cashier/products/domain/models/product_model.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class ProductsRepository {
   final Dio dio;
-  ProductsRepository(this.dio);
+  final SharedPreferences pref;
+  ProductsRepository(this.dio, this.pref);
 
   Future<List<ProductModel>> getProducts() async {
     try {
       final pref = await SharedPreferences.getInstance();
       final token = pref.getString("token");
       final Response response = await dio.get(
-        "https://grm.getter.uz/product",
+        "product",
         queryParameters: {
           "limit": 20,
           "page": 1,
@@ -30,7 +32,6 @@ class ProductsRepository {
         throw Exception(response.statusMessage.toString());
       }
     } catch (e) {
-      debugPrint(e.toString());
       throw Exception(e);
     }
   }
@@ -43,17 +44,15 @@ class ProductsRepository {
     int amount,
   ) async {
     try {
-      final pref = await SharedPreferences.getInstance();
       final token = pref.getString("token");
       final response = await dio.post(
-        "https://grm.getter.uz/order",
+        "order",
         data: {
-          "seller": pref.getString("id"),
           "product": productId,
           "price": price,
           "plasticSum": priceInPlastik,
           "x": amount,
-          "kassa": kassaId
+          "kassa": kassaId,
         },
         options: Options(
           headers: {'Cookie': 'access_token_user=$token'},
@@ -65,6 +64,7 @@ class ProductsRepository {
         return left(response.data['message'].toString());
       }
     } catch (e) {
+      log(e.toString());
       return left(e.toString());
     }
   }

@@ -1,15 +1,13 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-// ignore_for_file: non_constant_identifier_names
-
 part of 'product_model.dart';
 
 // **************************************************************************
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$_ProductModel _$$_ProductModelFromJson(Map<String, dynamic> json) =>
-    _$_ProductModel(
+_$ProductModelImpl _$$ProductModelImplFromJson(Map<String, dynamic> json) =>
+    _$ProductModelImpl(
       id: json['id'] as String,
       code: json['code'] as String,
       color: json['color'] == null
@@ -17,15 +15,15 @@ _$_ProductModel _$$_ProductModelFromJson(Map<String, dynamic> json) =>
           : ColorModel.fromJson(json['color'] as Map<String, dynamic>),
       count: json['count'] as int,
       imgUrl: json['imgUrl'] as String? ?? '',
-      price: json['price'] as int,
-      comingPrice: json['comingPrice'] as int,
+      price: json['price'] as int? ?? 0,
+      comingPrice: json['comingPrice'] as int? ?? 0,
       shape: json['shape'] as String? ?? '',
       size: json['size'] as String? ?? '',
       style: json['style'] as String? ?? '',
       model: ModelsModel.fromJson(json['model'] as Map<String, dynamic>),
     );
 
-Map<String, dynamic> _$$_ProductModelToJson(_$_ProductModel instance) =>
+Map<String, dynamic> _$$ProductModelImplToJson(_$ProductModelImpl instance) =>
     <String, dynamic>{
       'id': instance.id,
       'code': instance.code,

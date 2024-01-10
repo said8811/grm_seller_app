@@ -123,6 +123,7 @@ class MainPage extends HookConsumerWidget {
                         const Gap(10),
                         if (state == MainPageStates.product)
                           const ProductsView(),
+                        const Gap(20),
                         if (state == MainPageStates.collection)
                           CollectionsView(
                             onTap: (collection) {},

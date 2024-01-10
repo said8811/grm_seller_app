@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:gap/gap.dart';
@@ -45,7 +43,6 @@ class _SellProductPageState extends ConsumerState<SellProductPage> {
             MaterialPageRoute(builder: (context) => const EndProductsPage()));
       }
       if (next.error != null) {
-        log(next.error.toString());
         Fluttertoast.showToast(msg: next.error!);
       }
     });
@@ -167,8 +164,11 @@ class _SellProductPageState extends ConsumerState<SellProductPage> {
                     onPressed: () {
                       Navigator.pop(context);
                     },
-                    style:
-                        ElevatedButton.styleFrom(backgroundColor: Colors.white),
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: Colors.white,
+                      padding: const EdgeInsets.symmetric(
+                          vertical: 20, horizontal: 25),
+                    ),
                     child: const Text(
                       "Отмена",
                       style: TextStyle(color: Colors.black),
@@ -185,6 +185,8 @@ class _SellProductPageState extends ConsumerState<SellProductPage> {
                           count);
                     },
                     style: ElevatedButton.styleFrom(
+                        padding: const EdgeInsets.symmetric(
+                            vertical: 20, horizontal: 25),
                         backgroundColor: Colors.black,
                         foregroundColor: Colors.white),
                     child: const Text(

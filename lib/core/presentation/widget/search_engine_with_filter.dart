@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:gap/gap.dart';
+import 'package:grm_cashier/products/shared/providers.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
 
-class SearchEngineWithFilter extends StatelessWidget {
+class SearchEngineWithFilter extends ConsumerWidget {
   final VoidCallback onTap;
   const SearchEngineWithFilter({
     super.key,
@@ -10,7 +12,7 @@ class SearchEngineWithFilter extends StatelessWidget {
   });
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, ref) {
     return SizedBox(
       height: 60,
       child: Row(
@@ -18,6 +20,9 @@ class SearchEngineWithFilter extends StatelessWidget {
           Expanded(
             flex: 4,
             child: TextField(
+              onChanged: (value) {
+                ref.read(productsNotifier.notifier).search(value);
+              },
               decoration: InputDecoration(
                 border: OutlineInputBorder(
                     borderSide: BorderSide.none,

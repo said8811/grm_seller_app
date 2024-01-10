@@ -9,18 +9,23 @@ class ProductsView extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final products = ref.watch(getProducts);
-    return products.when(
-      data: (data) => ListView.separated(
-          physics: const NeverScrollableScrollPhysics(),
-          separatorBuilder: (context, index) => const Gap(15),
-          itemCount: data.length,
-          shrinkWrap: true,
-          itemBuilder: (context, index) => ProductWidget(product: data[index])),
-      error: (error, stackTrace) => Text(error.toString()),
-      loading: () => const Center(
-        child: CircularProgressIndicator(),
-      ),
-    );
+    final products = ref.watch(productsNotifier);
+    return products.isLoading
+        ? const Center(
+            child: CircularProgressIndicator(),
+          )
+        : ListView.separated(
+            physics: const NeverScrollableScrollPhysics(),
+            separatorBuilder: (context, index) => const Gap(15),
+            itemCount: products.query.isEmpty
+                ? products.products.length
+                : products.searchedProducts.length,
+            shrinkWrap: true,
+            itemBuilder: (context, index) => ProductWidget(
+              product: products.query.isEmpty
+                  ? products.products[index]
+                  : products.searchedProducts[index],
+            ),
+          );
   }
 }

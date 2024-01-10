@@ -26,7 +26,9 @@ mixin _$ProductModel {
   int get count => throw _privateConstructorUsedError;
   @JsonKey(defaultValue: "")
   String get imgUrl => throw _privateConstructorUsedError;
+  @JsonKey(defaultValue: 0)
   int get price => throw _privateConstructorUsedError;
+  @JsonKey(defaultValue: 0)
   int get comingPrice => throw _privateConstructorUsedError;
   @JsonKey(defaultValue: "")
   String get shape => throw _privateConstructorUsedError;
@@ -54,8 +56,8 @@ abstract class $ProductModelCopyWith<$Res> {
       ColorModel? color,
       int count,
       @JsonKey(defaultValue: "") String imgUrl,
-      int price,
-      int comingPrice,
+      @JsonKey(defaultValue: 0) int price,
+      @JsonKey(defaultValue: 0) int comingPrice,
       @JsonKey(defaultValue: "") String shape,
       @JsonKey(defaultValue: "") String size,
       @JsonKey(defaultValue: "") String style,
@@ -160,11 +162,11 @@ class _$ProductModelCopyWithImpl<$Res, $Val extends ProductModel>
 }
 
 /// @nodoc
-abstract class _$$_ProductModelCopyWith<$Res>
+abstract class _$$ProductModelImplCopyWith<$Res>
     implements $ProductModelCopyWith<$Res> {
-  factory _$$_ProductModelCopyWith(
-          _$_ProductModel value, $Res Function(_$_ProductModel) then) =
-      __$$_ProductModelCopyWithImpl<$Res>;
+  factory _$$ProductModelImplCopyWith(
+          _$ProductModelImpl value, $Res Function(_$ProductModelImpl) then) =
+      __$$ProductModelImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -173,8 +175,8 @@ abstract class _$$_ProductModelCopyWith<$Res>
       ColorModel? color,
       int count,
       @JsonKey(defaultValue: "") String imgUrl,
-      int price,
-      int comingPrice,
+      @JsonKey(defaultValue: 0) int price,
+      @JsonKey(defaultValue: 0) int comingPrice,
       @JsonKey(defaultValue: "") String shape,
       @JsonKey(defaultValue: "") String size,
       @JsonKey(defaultValue: "") String style,
@@ -187,11 +189,11 @@ abstract class _$$_ProductModelCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_ProductModelCopyWithImpl<$Res>
-    extends _$ProductModelCopyWithImpl<$Res, _$_ProductModel>
-    implements _$$_ProductModelCopyWith<$Res> {
-  __$$_ProductModelCopyWithImpl(
-      _$_ProductModel _value, $Res Function(_$_ProductModel) _then)
+class __$$ProductModelImplCopyWithImpl<$Res>
+    extends _$ProductModelCopyWithImpl<$Res, _$ProductModelImpl>
+    implements _$$ProductModelImplCopyWith<$Res> {
+  __$$ProductModelImplCopyWithImpl(
+      _$ProductModelImpl _value, $Res Function(_$ProductModelImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -209,7 +211,7 @@ class __$$_ProductModelCopyWithImpl<$Res>
     Object? style = null,
     Object? model = null,
   }) {
-    return _then(_$_ProductModel(
+    return _then(_$ProductModelImpl(
       id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
@@ -260,22 +262,22 @@ class __$$_ProductModelCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_ProductModel implements _ProductModel {
-  _$_ProductModel(
+class _$ProductModelImpl implements _ProductModel {
+  _$ProductModelImpl(
       {required this.id,
       required this.code,
       required this.color,
       required this.count,
       @JsonKey(defaultValue: "") required this.imgUrl,
-      required this.price,
-      required this.comingPrice,
+      @JsonKey(defaultValue: 0) required this.price,
+      @JsonKey(defaultValue: 0) required this.comingPrice,
       @JsonKey(defaultValue: "") required this.shape,
       @JsonKey(defaultValue: "") required this.size,
       @JsonKey(defaultValue: "") required this.style,
       required this.model});
 
-  factory _$_ProductModel.fromJson(Map<String, dynamic> json) =>
-      _$$_ProductModelFromJson(json);
+  factory _$ProductModelImpl.fromJson(Map<String, dynamic> json) =>
+      _$$ProductModelImplFromJson(json);
 
   @override
   final String id;
@@ -289,8 +291,10 @@ class _$_ProductModel implements _ProductModel {
   @JsonKey(defaultValue: "")
   final String imgUrl;
   @override
+  @JsonKey(defaultValue: 0)
   final int price;
   @override
+  @JsonKey(defaultValue: 0)
   final int comingPrice;
   @override
   @JsonKey(defaultValue: "")
@@ -310,10 +314,10 @@ class _$_ProductModel implements _ProductModel {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_ProductModel &&
+            other is _$ProductModelImpl &&
             (identical(other.id, id) || other.id == id) &&
             (identical(other.code, code) || other.code == code) &&
             (identical(other.color, color) || other.color == color) &&
@@ -336,12 +340,12 @@ class _$_ProductModel implements _ProductModel {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_ProductModelCopyWith<_$_ProductModel> get copyWith =>
-      __$$_ProductModelCopyWithImpl<_$_ProductModel>(this, _$identity);
+  _$$ProductModelImplCopyWith<_$ProductModelImpl> get copyWith =>
+      __$$ProductModelImplCopyWithImpl<_$ProductModelImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_ProductModelToJson(
+    return _$$ProductModelImplToJson(
       this,
     );
   }
@@ -354,15 +358,15 @@ abstract class _ProductModel implements ProductModel {
       required final ColorModel? color,
       required final int count,
       @JsonKey(defaultValue: "") required final String imgUrl,
-      required final int price,
-      required final int comingPrice,
+      @JsonKey(defaultValue: 0) required final int price,
+      @JsonKey(defaultValue: 0) required final int comingPrice,
       @JsonKey(defaultValue: "") required final String shape,
       @JsonKey(defaultValue: "") required final String size,
       @JsonKey(defaultValue: "") required final String style,
-      required final ModelsModel model}) = _$_ProductModel;
+      required final ModelsModel model}) = _$ProductModelImpl;
 
   factory _ProductModel.fromJson(Map<String, dynamic> json) =
-      _$_ProductModel.fromJson;
+      _$ProductModelImpl.fromJson;
 
   @override
   String get id;
@@ -376,8 +380,10 @@ abstract class _ProductModel implements ProductModel {
   @JsonKey(defaultValue: "")
   String get imgUrl;
   @override
+  @JsonKey(defaultValue: 0)
   int get price;
   @override
+  @JsonKey(defaultValue: 0)
   int get comingPrice;
   @override
   @JsonKey(defaultValue: "")
@@ -392,6 +398,6 @@ abstract class _ProductModel implements ProductModel {
   ModelsModel get model;
   @override
   @JsonKey(ignore: true)
-  _$$_ProductModelCopyWith<_$_ProductModel> get copyWith =>
+  _$$ProductModelImplCopyWith<_$ProductModelImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

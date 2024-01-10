@@ -84,11 +84,11 @@ class _$ModelsModelCopyWithImpl<$Res, $Val extends ModelsModel>
 }
 
 /// @nodoc
-abstract class _$$_ModelsModelCopyWith<$Res>
+abstract class _$$ModelsModelImplCopyWith<$Res>
     implements $ModelsModelCopyWith<$Res> {
-  factory _$$_ModelsModelCopyWith(
-          _$_ModelsModel value, $Res Function(_$_ModelsModel) then) =
-      __$$_ModelsModelCopyWithImpl<$Res>;
+  factory _$$ModelsModelImplCopyWith(
+          _$ModelsModelImpl value, $Res Function(_$ModelsModelImpl) then) =
+      __$$ModelsModelImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({String id, String title, CollectionsModel collection});
@@ -98,11 +98,11 @@ abstract class _$$_ModelsModelCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_ModelsModelCopyWithImpl<$Res>
-    extends _$ModelsModelCopyWithImpl<$Res, _$_ModelsModel>
-    implements _$$_ModelsModelCopyWith<$Res> {
-  __$$_ModelsModelCopyWithImpl(
-      _$_ModelsModel _value, $Res Function(_$_ModelsModel) _then)
+class __$$ModelsModelImplCopyWithImpl<$Res>
+    extends _$ModelsModelCopyWithImpl<$Res, _$ModelsModelImpl>
+    implements _$$ModelsModelImplCopyWith<$Res> {
+  __$$ModelsModelImplCopyWithImpl(
+      _$ModelsModelImpl _value, $Res Function(_$ModelsModelImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -112,7 +112,7 @@ class __$$_ModelsModelCopyWithImpl<$Res>
     Object? title = null,
     Object? collection = null,
   }) {
-    return _then(_$_ModelsModel(
+    return _then(_$ModelsModelImpl(
       id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
@@ -131,12 +131,12 @@ class __$$_ModelsModelCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_ModelsModel implements _ModelsModel {
-  _$_ModelsModel(
+class _$ModelsModelImpl implements _ModelsModel {
+  _$ModelsModelImpl(
       {required this.id, required this.title, required this.collection});
 
-  factory _$_ModelsModel.fromJson(Map<String, dynamic> json) =>
-      _$$_ModelsModelFromJson(json);
+  factory _$ModelsModelImpl.fromJson(Map<String, dynamic> json) =>
+      _$$ModelsModelImplFromJson(json);
 
   @override
   final String id;
@@ -151,10 +151,10 @@ class _$_ModelsModel implements _ModelsModel {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_ModelsModel &&
+            other is _$ModelsModelImpl &&
             (identical(other.id, id) || other.id == id) &&
             (identical(other.title, title) || other.title == title) &&
             (identical(other.collection, collection) ||
@@ -168,12 +168,12 @@ class _$_ModelsModel implements _ModelsModel {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_ModelsModelCopyWith<_$_ModelsModel> get copyWith =>
-      __$$_ModelsModelCopyWithImpl<_$_ModelsModel>(this, _$identity);
+  _$$ModelsModelImplCopyWith<_$ModelsModelImpl> get copyWith =>
+      __$$ModelsModelImplCopyWithImpl<_$ModelsModelImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_ModelsModelToJson(
+    return _$$ModelsModelImplToJson(
       this,
     );
   }
@@ -183,10 +183,10 @@ abstract class _ModelsModel implements ModelsModel {
   factory _ModelsModel(
       {required final String id,
       required final String title,
-      required final CollectionsModel collection}) = _$_ModelsModel;
+      required final CollectionsModel collection}) = _$ModelsModelImpl;
 
   factory _ModelsModel.fromJson(Map<String, dynamic> json) =
-      _$_ModelsModel.fromJson;
+      _$ModelsModelImpl.fromJson;
 
   @override
   String get id;
@@ -196,6 +196,6 @@ abstract class _ModelsModel implements ModelsModel {
   CollectionsModel get collection;
   @override
   @JsonKey(ignore: true)
-  _$$_ModelsModelCopyWith<_$_ModelsModel> get copyWith =>
+  _$$ModelsModelImplCopyWith<_$ModelsModelImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
