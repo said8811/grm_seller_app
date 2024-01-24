@@ -21,6 +21,7 @@ _$ProductModelImpl _$$ProductModelImplFromJson(Map<String, dynamic> json) =>
       size: json['size'] as String? ?? '',
       style: json['style'] as String? ?? '',
       model: ModelsModel.fromJson(json['model'] as Map<String, dynamic>),
+      isMetric: json['isMetric'] as bool,
     );
 
 Map<String, dynamic> _$$ProductModelImplToJson(_$ProductModelImpl instance) =>
@@ -36,4 +37,5 @@ Map<String, dynamic> _$$ProductModelImplToJson(_$ProductModelImpl instance) =>
       'size': instance.size,
       'style': instance.style,
       'model': instance.model,
+      'isMetric': instance.isMetric,
     };

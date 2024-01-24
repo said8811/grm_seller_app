@@ -21,6 +21,7 @@ class _SellProductPageState extends ConsumerState<SellProductPage> {
   SharedPreferences? pref;
   int count = 1;
   bool cardUsed = false;
+  bool isMetric = false;
   TextEditingController priceController = TextEditingController();
   TextEditingController plasticController = TextEditingController();
 
@@ -75,37 +76,76 @@ class _SellProductPageState extends ConsumerState<SellProductPage> {
                 style: const TextStyle(color: Color(0xFF121212)),
               ),
               const Gap(40),
-              Container(
-                padding: const EdgeInsets.all(8),
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(15),
-                  color: Colors.white,
+              ListTile(
+                contentPadding: EdgeInsets.zero,
+                onTap: () {
+                  setState(() {});
+                  isMetric = !isMetric;
+                },
+                leading: Checkbox(
+                  focusColor: Colors.black,
+                  activeColor: Colors.black,
+                  checkColor: Colors.black,
+                  value: isMetric,
+                  onChanged: null,
                 ),
-                child: Row(
-                  children: [
-                    const Text(
-                      "Количество",
+                title: const Text("Метражный продукт"),
+              ),
+              const Gap(20),
+              if (!isMetric)
+                Container(
+                  padding: const EdgeInsets.all(8),
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(15),
+                    color: Colors.white,
+                  ),
+                  child: Row(
+                    children: [
+                      const Text(
+                        "Количество",
+                        style: TextStyle(color: Colors.grey),
+                      ),
+                      const Spacer(),
+                      IconButton(
+                          onPressed: () {
+                            if (count != 1) {
+                              setState(() {});
+                              count -= 1;
+                            }
+                          },
+                          icon: const Icon(Icons.remove)),
+                      Text(count.toString()),
+                      IconButton(
+                          onPressed: () {
+                            setState(() {});
+                            count += 1;
+                          },
+                          icon: const Icon(Icons.add))
+                    ],
+                  ),
+                ),
+              if (isMetric)
+                TextField(
+                  keyboardType: TextInputType.number,
+                  decoration: InputDecoration(
+                    prefix: const Text(
+                      "Длина ",
                       style: TextStyle(color: Colors.grey),
                     ),
-                    const Spacer(),
-                    IconButton(
-                        onPressed: () {
-                          if (count != 1) {
-                            setState(() {});
-                            count -= 1;
-                          }
-                        },
-                        icon: const Icon(Icons.remove)),
-                    Text(count.toString()),
-                    IconButton(
-                        onPressed: () {
-                          setState(() {});
-                          count += 1;
-                        },
-                        icon: const Icon(Icons.add))
-                  ],
+                    suffix: const Text(
+                      "sm",
+                      style: TextStyle(color: Colors.black),
+                    ),
+                    hintText: " Размер",
+                    hintStyle:
+                        const TextStyle(fontSize: 14, color: Colors.grey),
+                    fillColor: Colors.white,
+                    filled: true,
+                    border: OutlineInputBorder(
+                        borderSide: BorderSide.none,
+                        borderRadius: BorderRadius.circular(15)),
+                  ),
                 ),
-              ),
               const Gap(20),
               TextField(
                 keyboardType: TextInputType.number,

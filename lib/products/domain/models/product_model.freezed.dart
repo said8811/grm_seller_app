@@ -37,6 +37,7 @@ mixin _$ProductModel {
   @JsonKey(defaultValue: "")
   String get style => throw _privateConstructorUsedError;
   ModelsModel get model => throw _privateConstructorUsedError;
+  bool get isMetric => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -61,7 +62,8 @@ abstract class $ProductModelCopyWith<$Res> {
       @JsonKey(defaultValue: "") String shape,
       @JsonKey(defaultValue: "") String size,
       @JsonKey(defaultValue: "") String style,
-      ModelsModel model});
+      ModelsModel model,
+      bool isMetric});
 
   $ColorModelCopyWith<$Res>? get color;
   $ModelsModelCopyWith<$Res> get model;
@@ -91,6 +93,7 @@ class _$ProductModelCopyWithImpl<$Res, $Val extends ProductModel>
     Object? size = null,
     Object? style = null,
     Object? model = null,
+    Object? isMetric = null,
   }) {
     return _then(_value.copyWith(
       id: null == id
@@ -137,6 +140,10 @@ class _$ProductModelCopyWithImpl<$Res, $Val extends ProductModel>
           ? _value.model
           : model // ignore: cast_nullable_to_non_nullable
               as ModelsModel,
+      isMetric: null == isMetric
+          ? _value.isMetric
+          : isMetric // ignore: cast_nullable_to_non_nullable
+              as bool,
     ) as $Val);
   }
 
@@ -180,7 +187,8 @@ abstract class _$$ProductModelImplCopyWith<$Res>
       @JsonKey(defaultValue: "") String shape,
       @JsonKey(defaultValue: "") String size,
       @JsonKey(defaultValue: "") String style,
-      ModelsModel model});
+      ModelsModel model,
+      bool isMetric});
 
   @override
   $ColorModelCopyWith<$Res>? get color;
@@ -210,6 +218,7 @@ class __$$ProductModelImplCopyWithImpl<$Res>
     Object? size = null,
     Object? style = null,
     Object? model = null,
+    Object? isMetric = null,
   }) {
     return _then(_$ProductModelImpl(
       id: null == id
@@ -256,6 +265,10 @@ class __$$ProductModelImplCopyWithImpl<$Res>
           ? _value.model
           : model // ignore: cast_nullable_to_non_nullable
               as ModelsModel,
+      isMetric: null == isMetric
+          ? _value.isMetric
+          : isMetric // ignore: cast_nullable_to_non_nullable
+              as bool,
     ));
   }
 }
@@ -274,7 +287,8 @@ class _$ProductModelImpl implements _ProductModel {
       @JsonKey(defaultValue: "") required this.shape,
       @JsonKey(defaultValue: "") required this.size,
       @JsonKey(defaultValue: "") required this.style,
-      required this.model});
+      required this.model,
+      required this.isMetric});
 
   factory _$ProductModelImpl.fromJson(Map<String, dynamic> json) =>
       _$$ProductModelImplFromJson(json);
@@ -307,10 +321,12 @@ class _$ProductModelImpl implements _ProductModel {
   final String style;
   @override
   final ModelsModel model;
+  @override
+  final bool isMetric;
 
   @override
   String toString() {
-    return 'ProductModel(id: $id, code: $code, color: $color, count: $count, imgUrl: $imgUrl, price: $price, comingPrice: $comingPrice, shape: $shape, size: $size, style: $style, model: $model)';
+    return 'ProductModel(id: $id, code: $code, color: $color, count: $count, imgUrl: $imgUrl, price: $price, comingPrice: $comingPrice, shape: $shape, size: $size, style: $style, model: $model, isMetric: $isMetric)';
   }
 
   @override
@@ -329,13 +345,15 @@ class _$ProductModelImpl implements _ProductModel {
             (identical(other.shape, shape) || other.shape == shape) &&
             (identical(other.size, size) || other.size == size) &&
             (identical(other.style, style) || other.style == style) &&
-            (identical(other.model, model) || other.model == model));
+            (identical(other.model, model) || other.model == model) &&
+            (identical(other.isMetric, isMetric) ||
+                other.isMetric == isMetric));
   }
 
   @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(runtimeType, id, code, color, count, imgUrl,
-      price, comingPrice, shape, size, style, model);
+      price, comingPrice, shape, size, style, model, isMetric);
 
   @JsonKey(ignore: true)
   @override
@@ -363,7 +381,8 @@ abstract class _ProductModel implements ProductModel {
       @JsonKey(defaultValue: "") required final String shape,
       @JsonKey(defaultValue: "") required final String size,
       @JsonKey(defaultValue: "") required final String style,
-      required final ModelsModel model}) = _$ProductModelImpl;
+      required final ModelsModel model,
+      required final bool isMetric}) = _$ProductModelImpl;
 
   factory _ProductModel.fromJson(Map<String, dynamic> json) =
       _$ProductModelImpl.fromJson;
@@ -396,6 +415,8 @@ abstract class _ProductModel implements ProductModel {
   String get style;
   @override
   ModelsModel get model;
+  @override
+  bool get isMetric;
   @override
   @JsonKey(ignore: true)
   _$$ProductModelImplCopyWith<_$ProductModelImpl> get copyWith =>

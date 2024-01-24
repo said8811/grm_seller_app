@@ -24,6 +24,7 @@ class ProductsRepository {
           headers: {'Cookie': 'access_token_user=$token'},
         ),
       );
+      log("message");
       if (response.statusCode == 200) {
         return (response.data['items'] as List)
             .map((e) => ProductModel.fromJson(e))
@@ -32,7 +33,8 @@ class ProductsRepository {
         throw Exception(response.statusMessage.toString());
       }
     } catch (e) {
-      throw Exception(e);
+      log(e.toString());
+      return [];
     }
   }
 

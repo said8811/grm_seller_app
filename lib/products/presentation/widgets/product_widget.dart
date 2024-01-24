@@ -24,8 +24,10 @@ class ProductWidget extends StatelessWidget {
         padding: const EdgeInsets.all(20),
         decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(10),
-            image: DecorationImage(
-                image: NetworkImage(product.imgUrl), fit: BoxFit.cover)),
+            image: product.imgUrl.isEmpty
+                ? null
+                : DecorationImage(
+                    image: NetworkImage(product.imgUrl), fit: BoxFit.cover)),
         child: Column(
           children: [
             Row(

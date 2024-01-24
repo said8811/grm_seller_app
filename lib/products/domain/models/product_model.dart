@@ -21,6 +21,7 @@ class ProductModel with _$ProductModel {
     @JsonKey(defaultValue: "") required String size,
     @JsonKey(defaultValue: "") required String style,
     required ModelsModel model,
+    required bool isMetric,
   }) = _ProductModel;
 
   factory ProductModel.fromJson(Map<String, dynamic> json) =>

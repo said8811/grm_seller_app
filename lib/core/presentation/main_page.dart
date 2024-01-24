@@ -9,6 +9,7 @@ import 'package:grm_cashier/core/presentation/widget/products_view.dart';
 import 'package:grm_cashier/core/presentation/widget/search_engine_with_filter.dart';
 import 'package:grm_cashier/core/presentation/widget/select_custom_widget.dart';
 import 'package:grm_cashier/core/shared/providers.dart';
+import 'package:grm_cashier/products/shared/providers.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 class MainPage extends HookConsumerWidget {
@@ -122,7 +123,11 @@ class MainPage extends HookConsumerWidget {
                           ),
                         const Gap(10),
                         if (state == MainPageStates.product)
-                          const ProductsView(),
+                          RefreshIndicator(
+                              onRefresh: () async {
+                                ref.watch(getProducts);
+                              },
+                              child: const ProductsView()),
                         const Gap(20),
                         if (state == MainPageStates.collection)
                           CollectionsView(
